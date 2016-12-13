@@ -128,7 +128,7 @@ namespace Whathecode.System
 	/// Class specifying an interval from a value, to a value. Borders may be included or excluded. This type is immutable.
 	/// </summary>
 	/// <typeparam name = "T">The type used to specify the interval, and used for the calculations.</typeparam>
-	/// <typeparam name = "TSize">The type used to specify distances in between two values of <see cref="T" />.</typeparam>
+	/// <typeparam name = "TSize">The type used to specify distances in between two values of <typeparamref name="T" />.</typeparam>
 	public partial class Interval<T, TSize> : AbstractInterval<T, TSize>
 		where T : IComparable<T>
 		where TSize : IComparable<TSize>

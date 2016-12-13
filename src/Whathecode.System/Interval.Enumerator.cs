@@ -10,8 +10,6 @@ namespace Whathecode.System
 		/// <summary>
 		/// Enumerator which allows you to walk across values inside an interval.
 		/// </summary>
-		/// <typeparam name = "T">The type used to specify the interval, and used for the calculations.</typeparam>
-		/// <typeparam name = "TSize">The type used to specify distances in between two values of <see cref="T" />.</typeparam>
 		public class Enumerator : AbstractEnumerator<T>
 		{
 			readonly Interval<T, TSize> _interval;

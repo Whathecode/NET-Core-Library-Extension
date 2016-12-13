@@ -11,7 +11,7 @@
 	{
 		/// <summary>
 		/// A reference key point which can be used to initialize the
-		/// <see cref="System.Arithmetic.Interpolation.KeyPoint.AbsoluteKeyPointCollection{TValue,TMath}">AbsoluteKeyPointCollection</see>.
+		/// <see cref="AbsoluteKeyPointCollection{TValue,TMath}">AbsoluteKeyPointCollection</see>.
 		/// </summary>
 		public static AbsoluteKeyPoint<TKey, TValue> ReferenceKeyPoint
 		{

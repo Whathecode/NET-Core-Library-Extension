@@ -36,7 +36,6 @@ namespace Whathecode.System.Algorithm.Interpolation
 		/// <summary>
 		/// Gets the value of a specified dimension of a specified object.
 		/// </summary>
-		/// <typeparam name = "TValue">The type of the value object.</typeparam>
 		/// <param name = "value">The object to get the value from.</param>
 		/// <param name = "dimension">The desired dimension to get the value for.</param>
 		/// <returns>The value of the specified dimension of the specified object.</returns>
