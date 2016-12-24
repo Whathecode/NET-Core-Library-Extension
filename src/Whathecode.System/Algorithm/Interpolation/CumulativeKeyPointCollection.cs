@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Whathecode.System.Collections;
-using Whathecode.System.Algorithm;
 using Whathecode.System.Operators;
 
 
@@ -49,10 +47,7 @@ namespace Whathecode.System.Algorithm.Interpolation
 		/// The range of all the data between which is interpolated.
 		/// TODO: Make readonly?
 		/// </summary>
-		public override IInterval<TMath> DataRange
-		{
-			get { return _dataRange; }
-		}
+		public override IInterval<TMath> DataRange => _dataRange;
 
 		/// <summary>
 		/// Get the key point at a given position when present.
@@ -79,16 +74,9 @@ namespace Whathecode.System.Algorithm.Interpolation
 		/// </summary>
 		/// <param name = "index">The index of the key point to get.</param>
 		/// <returns>The key point at the given index.</returns>
-		public override TValue this[ int index ]
-		{
-			get { return _data[ index ].Value; }
-		}
+		public override TValue this[ int index ] => _data[ index ].Value;
 
-		public override int Count
-		{
-			get { return _data.Count; }
-		}
-
+		public override int Count => _data.Count;
 
 		/// <summary>
 		/// Create a new collection of key points with cumulative values.

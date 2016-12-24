@@ -73,10 +73,7 @@ namespace Whathecode.System
 			: base( interval.Start, interval.IsStartIncluded, interval.End, interval.IsEndIncluded ) {}
 
 
-		protected override bool IsIntegralType
-		{
-			get { return _isIntegralType; }
-		}
+		protected override bool IsIntegralType => _isIntegralType;
 
 		protected override IInterval<T, T> CreateInstance( T start, bool isStartIncluded, T end, bool isEndIncluded )
 		{
@@ -108,7 +105,7 @@ namespace Whathecode.System
 				const string message =
 					"In order to use {0} you need to set 'ConvertSizeToDouble' and 'ConvertDoubleToSize'. " +
 					"These converters could not be generated automatically for the specified type parameters.";
-				throw new InvalidImplementationException( String.Format( message, type ) );
+				throw new InvalidImplementationException( string.Format( message, type ) );
 			}
 		}
 
@@ -184,10 +181,7 @@ namespace Whathecode.System
 			: base( start, isStartIncluded, end, isEndIncluded ) { }
 
 
-		protected override bool IsIntegralType
-		{
-			get { return _isIntegralType; }
-		}
+		protected override bool IsIntegralType => _isIntegralType;
 
 		protected override IInterval<T, TSize> CreateInstance( T start, bool isStartIncluded, T end, bool isEndIncluded )
 		{
@@ -214,7 +208,7 @@ namespace Whathecode.System
 				const string message =
 					"In order to use {0} you need to set 'ConvertSizeToDouble' and 'ConvertDoubleToSize'. " +
 					"These converters could not be generated automatically for the specified type parameters.";
-				throw new InvalidImplementationException( String.Format( message, type ) );
+				throw new InvalidImplementationException( string.Format( message, type ) );
 			}
 		}
 

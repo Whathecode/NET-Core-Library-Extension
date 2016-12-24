@@ -62,7 +62,7 @@ namespace Whathecode.System.Algorithm.Interpolation
 
 			// Interpolate.
 			double tension = 1 - Tension;
-			var interpolated = new TMath[ typeProvider.AmountOfDimensions ];
+			TMath[] interpolated = new TMath[ typeProvider.AmountOfDimensions ];
 			for ( int i = 0; i < typeProvider.AmountOfDimensions; ++i )
 			{
 				// Calculate tangents.
@@ -100,7 +100,7 @@ namespace Whathecode.System.Algorithm.Interpolation
 
 			// Get tangent by calculating derivative.
 			double tension = 1 - Tension;
-			var tangent = new TMath[typeProvider.AmountOfDimensions];
+			TMath[] tangent = new TMath[ typeProvider.AmountOfDimensions ];
 			for ( int i = 0; i < typeProvider.AmountOfDimensions; ++i )
 			{
 				// Original: (((2*t^3)-(3*t^2)+1)*b) + (((-2*t^3)+(3*t^2))*c) + ((t^3-(2*t^2)+t)*(n*(c-a))) + ((t^3-t^2)*(n*(d-b)))

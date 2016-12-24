@@ -142,7 +142,7 @@ namespace Whathecode.System.Reflection
 				case OperatorInner.LessThanOrEqual:
 					return Expression.LessThanOrEqual;
 				default:
-					throw new NotSupportedException( String.Format( "No expression supported for operator \"{0}\"", OperatorType ) );
+					throw new NotSupportedException( string.Format( "No expression supported for operator \"{0}\"", OperatorType ) );
 			}
 		}
 	}
@@ -173,7 +173,7 @@ namespace Whathecode.System.Reflection
 				case OperatorInner.OnesComplement:
 					return Expression.OnesComplement;
 				default:
-					throw new NotSupportedException( String.Format( "No expression supported for operator \"{0}\"", OperatorType ) );
+					throw new NotSupportedException( string.Format( "No expression supported for operator \"{0}\"", OperatorType ) );
 			}
 		}
 	}

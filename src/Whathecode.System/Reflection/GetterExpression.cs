@@ -45,7 +45,7 @@ namespace Whathecode.System.Reflection
 		/// <returns>A delegate which can be used to retrieve the value of this getter of the passed instance.</returns>
 		public Func<T> ClosedOver<TInstance>( TInstance instance )
 		{
-			var constantInstance = Expression.Constant( instance );
+			ConstantExpression constantInstance = Expression.Constant( instance );
 			return Expression.Lambda<Func<T>>( Expression.PropertyOrField( constantInstance, _memberName ) ).Compile();
 		}
 	}

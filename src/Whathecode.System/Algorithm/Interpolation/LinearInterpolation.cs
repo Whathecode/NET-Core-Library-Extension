@@ -32,7 +32,7 @@ namespace Whathecode.System.Algorithm.Interpolation
 			TMath[] biggerValues = typeProvider.GetDimensionValues( bigger );
 
 			// Linear interpolation.
-			var interpolated = new TMath[ typeProvider.AmountOfDimensions ];
+			TMath[] interpolated = new TMath[ typeProvider.AmountOfDimensions ];
 			for ( int i = 0; i < typeProvider.AmountOfDimensions; ++i )
 			{
 				var valueRange = new Interval<TMath>( smallerValues[ i ], biggerValues[ i ] );

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26009.0
+VisualStudioVersion = 15.0.26014.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C50AD33F-CEE7-4DD1-8FE7-49D96D67E32F}"
 EndProject
@@ -13,6 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Whathecode.System.Tests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{335D7838-9F5B-4AF7-A7C1-52C11C7F55ED}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md

@@ -32,12 +32,12 @@ namespace Whathecode.Tests.System
 		{
 			var incorrect = new Interval<TimeSpan, TimeSpan>( TimeSpan.Zero, TimeSpan.Zero );
 			// ReSharper disable UnusedVariable
-			Assert.Throws<InvalidImplementationException>( () => { var value = incorrect.GetValueAt( 0.5 ); } );
-			Assert.Throws<InvalidImplementationException>( () => { var perc = incorrect.GetPercentageFor( TimeSpan.Zero ); } );
+			Assert.Throws<InvalidImplementationException>( () => { TimeSpan value = incorrect.GetValueAt( 0.5 ); } );
+			Assert.Throws<InvalidImplementationException>( () => { double perc = incorrect.GetPercentageFor( TimeSpan.Zero ); } );
 			Assert.Throws<InvalidImplementationException>( () => incorrect.Scale( 1.0 ) );
-			Assert.Throws<InvalidImplementationException>( () => { var center = incorrect.Center; } );
+			Assert.Throws<InvalidImplementationException>( () => { TimeSpan center = incorrect.Center; } );
 			Assert.Throws<InvalidImplementationException>( 
-				() => { var mapped = incorrect.Map( TimeSpan.Zero, new Interval<int>( 1, 1 ) ); } );
+				() => { int mapped = incorrect.Map( TimeSpan.Zero, new Interval<int>( 1, 1 ) ); } );
 			// ReSharper restore UnusedVariable
 		}
 
@@ -175,7 +175,7 @@ namespace Whathecode.Tests.System
 			where T : IComparable<T>
 			where TSize : IComparable<TSize>
 		{
-			var valueAt = AddSize( start, addition );
+			T valueAt = AddSize( start, addition );
 
 			var interval = new Interval<T, TSize>( start, end );
 			Assert.Equal( valueAt, interval.GetValueAt( percentage ) );
@@ -198,8 +198,8 @@ namespace Whathecode.Tests.System
 			where T : IComparable<T>
 			where TSize : IComparable<TSize>
 		{
-			var aMinusB = SubtractSize( a, b );
-			var aPlusB = AddSize( a, b );
+			T aMinusB = SubtractSize( a, b );
+			T aPlusB = AddSize( a, b );
 
 			// Single value.
 			var single = new Interval<T, TSize>( a, a );
@@ -511,7 +511,7 @@ namespace Whathecode.Tests.System
 			// Fully included intervals.
 			Interval<T, TSize> intervalA = NewInterval( startA, additionA, startAIncluded, endAIncluded );
 			Interval<T, TSize> intervalB = NewInterval( startB, additionB, startBIncluded, endBIncluded );
-			var result = intervalA.Clamp( intervalB );
+			IInterval<T, TSize> result = intervalA.Clamp( intervalB );
 			Assert.Equal( clamped, result );
 		}
 
@@ -558,9 +558,7 @@ namespace Whathecode.Tests.System
 			where TSize : IComparable<TSize>
 		{
 			Interval<T, TSize> interval = NewInterval( start, addition );
-			IInterval<T, TSize> before;
-			IInterval<T, TSize> after;
-			interval.Split( atPoint, splitOption, out before, out after );
+			interval.Split( atPoint, splitOption, out IInterval<T, TSize>  before, out IInterval<T, TSize>  after );
 
 			Assert.Equal( expectedBefore, before );
 			Assert.Equal( expectedAfter, after );
@@ -764,7 +762,7 @@ namespace Whathecode.Tests.System
 			where T : IComparable<T>
 			where TSize : IComparable<TSize>
 		{
-			var interval = NewInterval( start, addition, startIncluded, endIncluded );
+			Interval<T, TSize> interval = NewInterval( start, addition, startIncluded, endIncluded );
 			Assert.Equal( extended, interval.ExpandTo( extendTo ) );
 		}
 

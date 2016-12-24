@@ -1,5 +1,4 @@
-﻿using Whathecode.System.Algorithm;
-using Whathecode.System.Collections.Generic;
+﻿using Whathecode.System.Collections.Generic;
 
 
 namespace Whathecode.System.Algorithm.Interpolation

@@ -81,13 +81,13 @@ namespace Whathecode.System
 
 			// Create delegate original and converted parameters.
 			// TODO: In the unlikely event that someone would create a delegate with a Closure argument, the following logic will fail. Add precondition to check this?
-			var toCreateArguments = toCreateInfo.GetParameters().Select( d => d.ParameterType );
-			var test = toWrapInfo.GetParameters();
-			var toWrapArguments = toWrapInfo.GetParameters()
+			IEnumerable<Type> toCreateArguments = toCreateInfo.GetParameters().Select( d => d.ParameterType );
+			ParameterInfo[] test = toWrapInfo.GetParameters();
+			IEnumerable<Type> toWrapArguments = toWrapInfo.GetParameters()
 				// Closure argument isn't an actual argument, but added by the compiler for dynamically generated methods (expression trees).
 				.SkipWhile( p => p.ParameterType.FullName == "System.Runtime.CompilerServices.Closure" )	
 				.Select( p => p.ParameterType );
-			var parameterExpressions = CreateParameterConversionExpressions( toCreateArguments, toWrapArguments );
+			ParameterConversionExpressions parameterExpressions = CreateParameterConversionExpressions( toCreateArguments, toWrapArguments );
 
 			// Create call to wrapped delegate.
 			Expression delegateCall = Expression.Invoke(
@@ -126,9 +126,9 @@ namespace Whathecode.System
 						MethodInfo delegateInfo = MethodInfoFromDelegateType( typeof( TDelegate ) );
 
 						// Create delegate original and converted arguments.
-						var delegateTypes = delegateInfo.GetParameters().Select( d => d.ParameterType );
-						var methodTypes = method.GetParameters().Select( p => p.ParameterType );
-						var delegateParameterExpressions = CreateParameterConversionExpressions( delegateTypes, methodTypes );
+						IEnumerable<Type> delegateTypes = delegateInfo.GetParameters().Select( d => d.ParameterType );
+						IEnumerable<Type> methodTypes = method.GetParameters().Select( p => p.ParameterType );
+						ParameterConversionExpressions delegateParameterExpressions = CreateParameterConversionExpressions( delegateTypes, methodTypes );
 
 						// Create method call.
 						Expression methodCall = Expression.Call(
@@ -177,7 +177,7 @@ namespace Whathecode.System
 				case CreateOptions.Downcasting:
 					{
 						MethodInfo delegateInfo = MethodInfoFromDelegateType( typeof( TDelegate ) );
-						var delegateParameters = delegateInfo.GetParameters();
+						ParameterInfo[] delegateParameters = delegateInfo.GetParameters();
 
 						// Convert instance type when necessary.
 						Type delegateInstanceType = delegateParameters.Select( p => p.ParameterType ).First();
@@ -186,9 +186,9 @@ namespace Whathecode.System
 						Expression convertedInstance = ConvertOrWrapDelegate( instance, methodInstanceType );
 
 						// Create delegate original and converted arguments.
-						var delegateTypes = delegateParameters.Select( d => d.ParameterType ).Skip( 1 );
-						var methodTypes = method.GetParameters().Select( m => m.ParameterType );
-						var delegateParameterExpressions = CreateParameterConversionExpressions( delegateTypes, methodTypes );
+						IEnumerable<Type> delegateTypes = delegateParameters.Select( d => d.ParameterType ).Skip( 1 );
+						IEnumerable<Type> methodTypes = method.GetParameters().Select( m => m.ParameterType );
+						ParameterConversionExpressions delegateParameterExpressions = CreateParameterConversionExpressions( delegateTypes, methodTypes );
 
 						// Create method call.
 						Expression methodCall = Expression.Call(
@@ -218,7 +218,7 @@ namespace Whathecode.System
 			IEnumerable<Type> toCreateTypes,
 			IEnumerable<Type> toWrapTypes )
 		{
-			var originalParameters = toCreateTypes.Select( Expression.Parameter ).ToArray(); // ToArray prevents deferred execution.   
+			ParameterExpression[] originalParameters = toCreateTypes.Select( Expression.Parameter ).ToArray(); // ToArray prevents deferred execution.   
 			
 			return new ParameterConversionExpressions
 			{

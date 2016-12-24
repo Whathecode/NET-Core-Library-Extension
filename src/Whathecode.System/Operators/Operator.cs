@@ -111,40 +111,28 @@ namespace Whathecode.System.Operators
 		/// A delegate to evaluate binary addition (+) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Add
-		{
-			get { return AddLazy.Value; }
-		}
+		public static Func<T, T, T> Add => AddLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> SubtractLazy;
 		/// <summary>
 		/// A delegate to evaluate binary subtraction (-) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Subtract
-		{
-			get { return SubtractLazy.Value; }
-		}
+		public static Func<T, T, T> Subtract => SubtractLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> MultiplyLazy;
 		/// <summary>
 		/// A delegate to evaluate binary multiplication (*) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Multiply
-		{
-			get { return MultiplyLazy.Value; }
-		}
+		public static Func<T, T, T> Multiply => MultiplyLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> DivideLazy;
 		/// <summary>
 		/// A delegate to evaluate binary division (/) for the given type.
 		/// This delegate will throw an <see cref = "InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Divide
-		{
-			get { return DivideLazy.Value; }
-		}
+		public static Func<T, T, T> Divide => DivideLazy.Value;
 
 		#endregion // Field operators.
 
@@ -156,40 +144,28 @@ namespace Whathecode.System.Operators
 		/// A delegate to evaluate bitwise and (&amp;) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> And
-		{
-			get { return AndLazy.Value; }
-		}
+		public static Func<T, T, T> And => AndLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> OrLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise inclusive or (|) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Or
-		{
-			get { return OrLazy.Value; }
-		}
+		public static Func<T, T, T> Or => OrLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> ExclusiveOrLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise exclusive or (^) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> ExclusiveOr
-		{
-			get { return ExclusiveOrLazy.Value; }
-		}
+		public static Func<T, T, T> ExclusiveOr => ExclusiveOrLazy.Value;
 
 		static readonly Lazy<Func<T, T>> NotLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise not (~) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type T does not provide this operator.
 		/// </summary>
-		public static Func<T, T> Not
-		{
-			get { return NotLazy.Value; }
-		}
+		public static Func<T, T> Not => NotLazy.Value;
 
 		#endregion // Bitwise operators.
 
@@ -228,30 +204,21 @@ namespace Whathecode.System.Operators
 		/// A delegate to evaluate binary addition (+) of a size to the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, TSize, T> AddSize
-		{
-			get { return AddSizeLazy.Value; }
-		}
+		public static Func<T, TSize, T> AddSize => AddSizeLazy.Value;
 
 		static readonly Lazy<Func<T, T, TSize>> SubtractLazy;
 		/// <summary>
 		/// A delegate to evaluate binary subtraction (-) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, TSize> Subtract
-		{
-			get { return SubtractLazy.Value; }
-		}
+		public static Func<T, T, TSize> Subtract => SubtractLazy.Value;
 
 		static readonly Lazy<Func<T, TSize, T>> SubtractSizeLazy;
 		/// <summary>
 		/// A delegate to evaluate binary subtraction (-) of a size for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, TSize, T> SubtractSize
-		{
-			get { return SubtractSizeLazy.Value; }
-		}
+		public static Func<T, TSize, T> SubtractSize => SubtractSizeLazy.Value;
 
 		#endregion // Field operators.
 

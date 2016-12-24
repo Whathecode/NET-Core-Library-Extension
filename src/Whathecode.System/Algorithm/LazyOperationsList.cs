@@ -71,7 +71,7 @@ namespace Whathecode.System.Algorithm
 		/// </summary>
 		public void FlushPendingOperations()
 		{
-			foreach ( var pending in _pendingOperations )
+			foreach ( IntervalCollection<int, Func<TObject, TObject>>.IntervalValues pending in _pendingOperations )
 			{
 				// Execute operations on entire range.
 				IList<Func<TObject, TObject>> operations = pending.Values;
@@ -107,7 +107,7 @@ namespace Whathecode.System.Algorithm
 		/// <returns></returns>
 		void ExecuteOperations( IEnumerable<Func<TObject, TObject>> operations, int i )
 		{
-			foreach ( var action in operations )
+			foreach ( Func<TObject, TObject> action in operations )
 			{
 				_list[ i ] = action( _list[ i ] );
 			}
@@ -134,7 +134,7 @@ namespace Whathecode.System.Algorithm
 
 				return _list[ index ];
 			}
-			set { throw new NotImplementedException(); }
+			set => throw new NotImplementedException();
 		}
 
 		#endregion
@@ -173,15 +173,9 @@ namespace Whathecode.System.Algorithm
 		/// <summary>
 		/// The amount of objects in the list.
 		/// </summary>
-		public int Count
-		{
-			get { return _list.Count; }
-		}
+		public int Count => _list.Count;
 
-		public bool IsReadOnly
-		{
-			get { return false; }
-		}
+		public bool IsReadOnly => false;
 
 		public bool Remove( TObject item )
 		{

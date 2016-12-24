@@ -127,10 +127,9 @@ namespace Whathecode.System.Reflection
 		/// <returns>True when the type supports the operator, false otherwise.</returns>
 		public static bool HasOperator( this TypeInfo source, Operator @operator )
 		{
-			var defaultValue = Expression.Default( source.AsType() );
+			DefaultExpression defaultValue = Expression.Default( source.AsType() );
 
-			var binaryOperator = @operator as BinaryOperator;
-			if ( binaryOperator != null )
+			if ( @operator is BinaryOperator binaryOperator )
 			{
 				try
 				{
@@ -140,11 +139,10 @@ namespace Whathecode.System.Reflection
 				catch
 				{
 					return false;
-				}								
+				}
 			}
 
-			var unaryOperator = @operator as UnaryOperator;
-			if ( unaryOperator != null )
+			if ( @operator is UnaryOperator unaryOperator )
 			{
 				try
 				{
@@ -154,10 +152,10 @@ namespace Whathecode.System.Reflection
 				catch
 				{
 					return false;
-				}					
+				}
 			}
 
-			throw new NotSupportedException( String.Format( "Operator \"{0}\" isn't supported.", @operator ) );
+			throw new NotSupportedException( string.Format( "Operator \"{0}\" isn't supported.", @operator ) );
 		}
 
 		/// <summary>
@@ -216,13 +214,13 @@ namespace Whathecode.System.Reflection
 		/// <returns>A list of all found methods.</returns>
 		public static IEnumerable<MethodInfo> GetFlattenedInterfaceMethods( this TypeInfo source, BindingFlags bindingFlags )
 		{
-			foreach ( var info in source.GetMethods( bindingFlags ) )
+			foreach ( MethodInfo info in source.GetMethods( bindingFlags ) )
 			{
 				yield return info;
 			}
 
-			var flattened = source.GetInterfaces().SelectMany( interfaceType => GetFlattenedInterfaceMethods( interfaceType.GetTypeInfo(), bindingFlags ) );
-			foreach ( var info in flattened )
+			IEnumerable<MethodInfo> flattened = source.GetInterfaces().SelectMany( interfaceType => GetFlattenedInterfaceMethods( interfaceType.GetTypeInfo(), bindingFlags ) );
+			foreach ( MethodInfo info in flattened )
 			{
 				yield return info;
 			}

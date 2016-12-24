@@ -32,7 +32,7 @@ namespace Whathecode.System.Tests.Reflection
 
 				public void Test()
 				{
-					foreach ( var test in this )
+					foreach ( Tuple<TypeInfo, TypeInfo, bool, bool> test in this )
 					{
 						// Implicit test.
 						Assert.Equal( test.Item3, test.Item1.CanConvertTo( test.Item2 ) );

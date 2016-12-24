@@ -22,26 +22,13 @@ namespace Whathecode.System.Algorithm.Interpolation
 		/// </summary>
 		readonly TValue _referenceKeyPoint;
 
-		public override IInterval<TMath> DataRange
-		{
-			get { return _data.GetKeysInterval(); }
-		}
+		public override IInterval<TMath> DataRange => _data.GetKeysInterval();
 
-		public override TValue this[ TMath position ]
-		{
-			get { return _data[ position ]; }
-		}
+		public override TValue this[ TMath position ] => _data[ position ];
 
-		public override TValue this[ int index ]
-		{
-			get { return _data[ _data.Keys[ index ] ]; }
-		}
+		public override TValue this[ int index ] => _data[ _data.Keys[ index ] ];
 
-		public override int Count
-		{
-			get { return _data.Count; }
-		}
-
+		public override int Count => _data.Count;
 
 		/// <summary>
 		/// Create a new collection of key points with absolute values.

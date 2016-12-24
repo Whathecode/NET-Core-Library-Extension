@@ -71,40 +71,28 @@ namespace Whathecode.System.Operators
 		/// A delegate to evaluate bitwise and (&amp;) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> And
-		{
-			get { return AndLazy.Value; }
-		}
+		public static Func<T, T, T> And => AndLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> OrLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise inclusive or (|) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> Or
-		{
-			get { return OrLazy.Value; }
-		}		
+		public static Func<T, T, T> Or => OrLazy.Value;
 
 		static readonly Lazy<Func<T, T, T>> ExclusiveOrLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise exclusive or (^) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type does not provide this operator.
 		/// </summary>
-		public static Func<T, T, T> ExclusiveOr
-		{
-			get { return ExclusiveOrLazy.Value; }
-		}
+		public static Func<T, T, T> ExclusiveOr => ExclusiveOrLazy.Value;
 
 		static readonly Lazy<Func<T, T>> NotLazy;
 		/// <summary>
 		/// A delegate to evaluate bitwise not (~) for the given type.
 		/// This delegate will throw an <see cref="InvalidOperationException" /> if the type T does not provide this operator.
 		/// </summary>
-		public static Func<T, T> Not
-		{
-			get { return NotLazy.Value; }
-		}
+		public static Func<T, T> Not => NotLazy.Value;
 
 
 		static BitwiseOperator()

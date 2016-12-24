@@ -76,7 +76,7 @@ namespace Whathecode.System.Algorithm
 			/// <param name = "currentIteration">The current iteration to do actions for.</param>
 			public void DoActions( LoopIteration currentIteration )
 			{
-				foreach ( var hookedOperation in _hookedOperation.Where( o => o.Condition( _iterationList, currentIteration ) ) )
+				foreach ( ConditionalHook hookedOperation in _hookedOperation.Where( o => o.Condition( _iterationList, currentIteration ) ) )
 				{
 					hookedOperation.HookOperation();
 				}

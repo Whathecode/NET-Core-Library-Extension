@@ -67,7 +67,7 @@ namespace Whathecode.System
 					 CastOperator<T, int>.Cast( one ) != 1 )
 				{
 					throw new NotSupportedException(
-						String.Format( "Unable to verify for type \"{0}\" whether it is an integral numeric type.", type ) );
+						string.Format( "Unable to verify for type \"{0}\" whether it is an integral numeric type.", type ) );
 				}
 				return Operator<T>.Divide( three, two ).Equals( one );
 			}

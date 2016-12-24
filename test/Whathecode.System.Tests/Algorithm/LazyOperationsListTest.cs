@@ -38,7 +38,7 @@ namespace Whathecode.Tests.System.Algorithm
 		public LazyOperationsListTest()
 		{
 			// Add data to list.
-			foreach ( var d in _originalData )
+			foreach ( int d in _originalData )
 			{
 				_list.Add( d );
 			}
@@ -46,7 +46,7 @@ namespace Whathecode.Tests.System.Algorithm
 
 		void PerformAllOperations()
 		{
-			foreach ( var range in _ranges )
+			foreach ( Interval<int> range in _ranges )
 			{
 				// Perform on original data.
 				for ( int i = range.Start; i <= range.End; ++i )

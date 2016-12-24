@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Whathecode.System.Collections;
 using Whathecode.System.Collections.Generic;
 
 
@@ -60,7 +59,7 @@ namespace Whathecode.System.Algorithm
 		/// </summary>
 		public void Run()
 		{
-			foreach ( var i in this )
+			foreach ( LoopIteration i in this )
 			{
 				Before.DoActions( i );
 
@@ -96,7 +95,7 @@ namespace Whathecode.System.Algorithm
 		{
 			_enumerateIterations.Clear();
 
-			foreach ( var objectRange in _iterations )
+			foreach ( IntervalCollection<int, Action>.IntervalValues objectRange in _iterations )
 			{
 				// Create action for the objectRange.
 				Action iteration;
@@ -111,7 +110,7 @@ namespace Whathecode.System.Algorithm
 					IList<Action> actions = objectRange.Values;
 					iteration = () =>
 					{
-						foreach ( var a in actions )
+						foreach ( Action a in actions )
 						{
 							a();
 						}

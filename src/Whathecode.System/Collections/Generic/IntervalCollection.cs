@@ -89,7 +89,7 @@ namespace Whathecode.System.Collections.Generic
 				};
 
 				// Split up all intersecting intervals.
-				foreach ( var intersectingRange in intersecting )
+				foreach ( IntervalValues intersectingRange in intersecting )
 				{
 					IInterval<TMath> intersection = intersectingRange.Interval.Intersection( interval );
 
@@ -102,7 +102,7 @@ namespace Whathecode.System.Collections.Generic
 
 					// Remove intersections from remnants.
 					var newRemnants = new List<IInterval<TMath>>();
-					foreach ( var remnant in remnants )
+					foreach ( IInterval<TMath> remnant in remnants )
 					{
 						newRemnants.AddRange( remnant.Subtract( intersection ) );
 					}
@@ -110,7 +110,7 @@ namespace Whathecode.System.Collections.Generic
 				}
 
 				// Add remnants of the newly added interval.
-				foreach ( var remnant in remnants )
+				foreach ( IInterval<TMath> remnant in remnants )
 				{
 					_rangedObjects.Add( new IntervalValues( values, remnant ) );
 				}
@@ -133,7 +133,7 @@ namespace Whathecode.System.Collections.Generic
 			_rangedObjects.Remove( objectRange );
 
 			// Add non intersection parts.
-			foreach ( var remaining in objectRange.Interval.Subtract( interval ) )
+			foreach ( IInterval<TMath> remaining in objectRange.Interval.Subtract( interval ) )
 			{
 				_rangedObjects.Add( new IntervalValues( objectRange.Values, remaining ) );
 			}
@@ -155,7 +155,7 @@ namespace Whathecode.System.Collections.Generic
 		/// <param name = "interval">The interval to remove.</param>
 		public void RemoveInterval( IInterval<TMath> interval )
 		{
-			foreach ( var intersectingRange in FindIntersections( interval ) )
+			foreach ( IntervalValues intersectingRange in FindIntersections( interval ) )
 			{
 				IInterval<TMath> intersection = intersectingRange.Interval.Intersection( interval );
 
@@ -173,7 +173,7 @@ namespace Whathecode.System.Collections.Generic
 			// Keep track of the intervals that need to be moved.
 			var movedIntervals = new List<IntervalValues>();
 
-			foreach ( var intersectingRange in FindIntersections( interval ) )
+			foreach ( IntervalValues intersectingRange in FindIntersections( interval ) )
 			{
 				IInterval<TMath> intersection = intersectingRange.Interval.Intersection( interval );
 
@@ -190,7 +190,7 @@ namespace Whathecode.System.Collections.Generic
 			}
 
 			// Add moved intervals again.
-			foreach ( var newRange in movedIntervals )
+			foreach ( IntervalValues newRange in movedIntervals )
 			{
 				Add( newRange.Interval, newRange.Values );
 			}
@@ -233,10 +233,7 @@ namespace Whathecode.System.Collections.Generic
 			_rangedObjects.CopyTo( array, arrayIndex );
 		}
 
-		public bool IsReadOnly
-		{
-			get { return false; }
-		}
+		public bool IsReadOnly => false;
 
 		List<IntervalValues> FindIntersections( IInterval<TMath> interval )
 		{

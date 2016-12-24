@@ -1,4 +1,5 @@
-﻿using Whathecode.System.Operators;
+﻿using System;
+using Whathecode.System.Operators;
 using Xunit;
 
 
@@ -34,8 +35,8 @@ namespace Whathecode.Tests.System.Operators
 		{
 			var a = new CustomOperatorsClass( 40 );
 			var b = new CustomOperatorsClass( 2 );
-			var add = Operator<CustomOperatorsClass>.Add;
-			var answer = add( a, b );
+			Func<CustomOperatorsClass, CustomOperatorsClass, CustomOperatorsClass> add = Operator<CustomOperatorsClass>.Add;
+			CustomOperatorsClass answer = add( a, b );
 			Assert.Equal( 42, answer.Value );
 		}
 	}
