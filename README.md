@@ -1,10 +1,10 @@
-# .NET Core Library Extension
+﻿# .NET Core Library Extension
 
 This library contains highly reuseable classes and methods I find to be missing in the cross-platform Core library of .NET. It builds on top of the [.NET Standard Library Extension](https://github.com/Whathecode/NET-Standard-Library-Extension), including functionality which can only be obtained by using features present in .NET Core, but unavailable in .NET Standard (e.g., runtime code compilation).
 
 **Requires**:
 
-- To open the solution and project files, the latest Visual Studio 2017 RC is required ([released on December 15](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes) at time of writing).
+- To open the solution and project files, Visual Studio 2017 is required.
 - The test project requires the [.NET Core 1.1 SDK](https://www.microsoft.com/net/download/core).
 
 Namespaces from the original library are followed as much as possible:
